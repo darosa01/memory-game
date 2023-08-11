@@ -1,9 +1,52 @@
+const jsConfetti = new JSConfetti()
+var audioVictoria = new Audio('assets/audio/so-victoria.wav');
+var audioFlip = new Audio('assets/audio/flip2.mp3');
+
 var selectedTile = null;
 var flipTimeout = null;
+var remainingTiles = null;
+var timerInterval = null;
+
+var cards = ['aerial-lift', 'alarm', 'ambulance', 'antenna', 'baby-carriage', 'backhoe', 'bat', 
+              'bath', 'battery-automotive', 'beach', 'bell-ringing', 'bone', 'briefcase', 'cake', 
+              'calculator', 'calendar-event', 'camera', 'campfire', 'candle', 'carrot', 'cherry', 
+              'christmas-tree', 'deer', 'device-landline-phone', 'dog', 'engine', 'fish', 'gavel',
+              'macro', 'mug', 'ship', 'snowman', 'trophy', 'woman'];
+
+function checkFinish(){
+  if(remainingTiles <= 0){
+    clearInterval(timerInterval);
+    document.getElementById('end-time').innerHTML = document.getElementById('timer').innerHTML;
+    document.getElementById('end-box').style.display = 'flex';
+    document.getElementById('end-box').classList.toggle('game-ended');
+    audioVictoria.play();
+	  jsConfetti.addConfetti();
+  }
+}
+
+function compareTiles(firstTile, secondTile){
+  var firstImage = document.getElementById('image-tile-' + firstTile).src;
+  var secondImage = document.getElementById('image-tile-' + secondTile).src;
+
+  return firstImage == secondImage;
+}
 
 function createBoard(size){
   var board = document.getElementById('board');
   var newCode = "";
+
+  var tilesNumber = size * size;
+  if(size % 2 == 1){
+    tilesNumber--;
+  }
+  var cardsNumber = tilesNumber / 2;
+
+  const shuffledArray = cards.sort(() => 0.5 - Math.random());
+  let selectedCards = shuffledArray.slice(0, cardsNumber);
+
+  selectedCards = selectedCards.concat(selectedCards);
+
+  const readyCards = selectedCards.sort(() => 0.5 - Math.random());
 
   var tileNumber = 0;
 
@@ -18,7 +61,7 @@ function createBoard(size){
         newCode += '<div class="board-tile-inner">';
           newCode += '<div class="board-tile-front"></div>';
           newCode += '<div class="board-tile-back">';
-            newCode += '<img src="assets/icons/brain.svg" alt="Paris" style="width:100px;height:100px">';
+            newCode += '<img id="image-tile-' + tileNumber + '" src="assets/cards/' + readyCards[size * i + j] + '.svg" alt="">';
           newCode += '</div>';
         newCode += '</div>';
       newCode += '</div>';
@@ -30,8 +73,33 @@ function createBoard(size){
   board.innerHTML = newCode;
 }
 
+function flipBackTiles(firstTile, secondTile){
+  flipTimeout = setTimeout(() => {
+    document.getElementById('tile-' + firstTile).classList.toggle('board-tile-selected');
+    document.getElementById('tile-' + secondTile).classList.toggle('board-tile-selected');
+    selectedTile = null;
+    flipTimeout = null;
+  }, 1000);
+}
+
+function removeTiles(firstTile, secondTile){
+  flipTimeout = setTimeout(() => {
+    var firstElem = document.getElementById('tile-' + firstTile);
+    firstElem.classList.toggle('board-tile-removed');
+    firstElem.removeAttribute('onclick');
+    var secondElem = document.getElementById('tile-' + secondTile);
+    secondElem.classList.toggle('board-tile-removed');
+    secondElem.removeAttribute('onclick');
+    selectedTile = null;
+    flipTimeout = null;
+    remainingTiles -= 2;
+    checkFinish();
+  }, 500);
+}
+
 function selectTile(number){
-  if(flipTimeout === null){
+  if(flipTimeout === null && selectedTile != number){
+    audioFlip.play();
     document.getElementById('tile-' + number).classList.toggle('board-tile-selected');
 
     if(selectedTile === null){
@@ -40,14 +108,19 @@ function selectTile(number){
       if(compareTiles(selectedTile, number)){
         removeTiles(selectedTile, number);
       } else {
-        document.getElementById('tile-' + selectedTile).classList.toggle('board-tile-selected');
-        document.getElementById('tile-' + number).classList.toggle('board-tile-selected');
+        flipBackTiles(selectedTile, number);
       }
     }
   }
 }
 
 function startGame(size){
+  remainingTiles = size * size;
+
+  if(remainingTiles % 2 == 1){
+    remainingTiles--;
+  }
+
   createBoard(size);
   startTimer();
 
@@ -56,7 +129,7 @@ function startGame(size){
 
 function startTimer(){
   var timer = 0;
-  setInterval(() => {
+  timerInterval = setInterval(() => {
     timer++;
     const minutes = Math.floor(timer / 60);
     const seconds = timer - minutes * 60;

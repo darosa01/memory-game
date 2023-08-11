@@ -6,7 +6,7 @@
   <title>1 jugador - Memory</title>
 
   <link rel="stylesheet" href="assets/css/game.css">
-  <script src="assets/js/memory.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 </head>
 <body>
   <header>
@@ -26,5 +26,13 @@
       </div>
     </div>
   </div>
+  <div class="end-box" id="end-box">
+    <div>
+      <h2>Enhorabona!</h2>
+      <div>Has acabat la partida en <span id="end-time"></span></div>
+      <a class="main-page-button" href="index.html">Torna a la pàgina principal</a>
+    </div>
+  </div>
+  <script src="assets/js/memory.js"></script>
 </body>
 </html>
