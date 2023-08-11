@@ -133,7 +133,7 @@ header img{
 }
 .dificulty-selector > div{
   align-items: center;
-  aspect-ratio : 1 / 1;
+  
   background-color: var(--secondary);
   border-radius: 2rem;
   cursor: pointer;
@@ -211,4 +211,10 @@ header img{
 .game-ended{
   opacity: 1;
   transition: opacity 1s;
+}
+
+@media (max-width: 850px) {
+  .dificulty-selector{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
