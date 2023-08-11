@@ -1,0 +1,152 @@
+@import url('./root.css');
+
+h1{
+  text-align: center;
+}
+
+header{
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 3fr 1fr;
+  height: calc(20vh - 4rem);
+  padding: 0 2rem;
+}
+header > div{
+  justify-self: end;
+}
+header img{
+  height: 50px;
+  width: 50px;
+}
+
+/* Board */
+
+.board-row{
+  display: flex;
+  gap: 1rem;
+}
+/*
+.board-tile{
+  aspect-ratio : 1 / 1;
+  background-color: var(--secondary);
+  background-image: url('../icons/brain.svg');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  border-radius: 1rem;
+  cursor: pointer;
+  flex-grow: 1;
+}
+*/
+
+.board-tile{
+  aspect-ratio : 1 / 1;
+  background-color: transparent;
+  border-radius: 1rem;
+  cursor: pointer;
+  flex-grow: 1;
+  perspective: 1000px;
+}
+
+.board-tile-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.board-tile-selected .board-tile-inner {
+  transform: rotateY(180deg);
+}
+
+.board-tile-front, .board-tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.board-tile-front {
+  background-color: var(--secondary);
+  background-image: url('../icons/brain.svg');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  border-radius: 1rem;
+}
+
+/* Style the back side */
+.board-tile-back {
+  background-color: dodgerblue;
+  border-radius: 1rem;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.dummy-tile{
+  aspect-ratio : 1 / 1;
+  background-color: var(--secondary);
+  border-radius: 1rem;
+  flex-grow: 1;
+}
+
+#board{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: min(80vh, 90vw);
+  padding: 2rem 1rem;
+  margin: auto;
+  width: min(80vh, 90vw);
+}
+
+
+/* Dificulty selector */
+
+.dificulty-selector{
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+}
+.dificulty-selector > div{
+  align-items: center;
+  aspect-ratio : 1 / 1;
+  background-color: var(--secondary);
+  border-radius: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5rem;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  width: calc(100% - 4rem);
+}
+
+#dificulty-box{
+  align-items: center;
+  background-color: hsla(0, 0%, 50%);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+#dificulty-box > div{
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+  font-size: 2rem;
+  padding: 2rem;
+  width: 90vw;
+}

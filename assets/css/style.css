@@ -1,0 +1,48 @@
+@import url('./root.css');
+
+footer{
+  padding: 4rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+h1{
+  font-size: 3.5rem;
+}
+
+h2{
+  padding: 1rem;
+}
+
+header{
+  text-align: center;
+}
+
+nav{
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 2rem;
+}
+
+nav > a{
+  align-items: center;
+  aspect-ratio : 1 / 1;
+  background-color: var(--secondary);
+  border-radius: var(--border-radius);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5rem;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  width: calc(100% - 4rem);
+}
+
+@media (max-width: 400px) {
+  nav{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

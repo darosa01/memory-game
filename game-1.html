@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 jugador - Memory</title>
+
+  <link rel="stylesheet" href="assets/css/game.css">
+  <script src="assets/js/memory.js"></script>
+</head>
+<body>
+  <header>
+    <a href="../"><img src="assets/icons/home.svg" alt="Home button"></a>
+    <h1>1 jugador</h1>
+    <div id="timer">00:00</div>
+  </header>
+  <main id="board"></main>
+  <div id="dificulty-box">
+    <div>
+      <div>Selecciona la dificultat:</div>
+      <div class="dificulty-selector">
+        <div onclick="startGame(3)">3x3</div>
+        <div onclick="startGame(4)">4x4</div>
+        <div onclick="startGame(5)">5x5</div>
+        <div onclick="startGame(6)">6x6</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
