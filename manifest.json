@@ -1,0 +1,61 @@
+{
+  "name": "Memory",
+  "short_name": "Memory",
+  "start_url": "/memory/",
+  "display": "standalone",
+  "description": "Un entretingut i senzill joc de memòria disponible per a tots els teus dispositius.",
+  "lang": "ca",
+  "dir": "auto",
+  "theme_color": "#8FB3FF",
+  "background_color": "#F7F7F7",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icons/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "1 jugador",
+      "url": "/memory/game-1.html",
+      "description": "Inicia una partida d'un sol jugador",
+      "icons": [{
+        "src": "assets/icons/user.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      }]
+    },
+    {
+      "name": "2 jugadors",
+      "url": "/memory/game-2.html",
+      "description": "Inicia una partida per a dos jugadors",
+      "icons": [{
+        "src": "assets/icons/users.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      }]
+    }
+  ]
+}
