@@ -8,11 +8,21 @@ var remainingTiles = null;
 var timerInterval = null;
 var tableSize = null;
 
+var currentPlayer = 1;
+
+var pointsPlayer1 = 0;
+var pointsPlayer2 = 0;
+
 var cards = ['aerial-lift', 'alarm', 'ambulance', 'antenna', 'baby-carriage', 'backhoe', 'bat', 
               'bath', 'battery-automotive', 'beach', 'bell-ringing', 'bone', 'briefcase', 'cake', 
               'calculator', 'calendar-event', 'camera', 'campfire', 'candle', 'carrot', 'cherry', 
               'christmas-tree', 'deer', 'device-landline-phone', 'dog', 'engine', 'fish', 'gavel',
               'macro', 'mug', 'ship', 'snowman', 'trophy', 'woman'];
+
+function changePlayer(){
+  currentPlayer = currentPlayer%2 + 1;
+  document.getElementById('current-player').innerHTML = "Jugador/a " + currentPlayer;
+}
 
 function checkFinish(){
   if(remainingTiles <= 0){
@@ -20,6 +30,22 @@ function checkFinish(){
     document.getElementById('end-time').innerHTML = document.getElementById('timer').innerHTML;
     document.getElementById('end-box').style.display = 'flex';
     document.getElementById('end-box').classList.toggle('game-ended');
+
+    document.getElementById('first-player-pairs').innerHTML = pointsPlayer1;
+    document.getElementById('second-player-pairs').innerHTML = pointsPlayer2;
+
+    document.getElementById('winner-box').style.display = 'block';
+    document.getElementById('tie-box').style.display = 'none';
+
+    if(pointsPlayer1 > pointsPlayer2){
+      document.getElementById('winner').innerHTML = "1";
+    } else if(pointsPlayer1 < pointsPlayer2){
+      document.getElementById('winner').innerHTML = "2";
+    } else {
+      document.getElementById('winner-box').style.display = 'none';
+      document.getElementById('tie-box').style.display = 'block';
+    }
+
     audioVictoria.play();
 	  jsConfetti.addConfetti();
   }
@@ -80,6 +106,7 @@ function flipBackTiles(firstTile, secondTile){
     document.getElementById('tile-' + secondTile).classList.toggle('board-tile-selected');
     selectedTile = null;
     flipTimeout = null;
+    changePlayer();
   }, 1000);
 }
 
@@ -93,12 +120,21 @@ function removeTiles(firstTile, secondTile){
     secondElem.removeAttribute('onclick');
     selectedTile = null;
     flipTimeout = null;
+    if(currentPlayer == 1){
+      pointsPlayer1++;
+    } else {
+      pointsPlayer2++;
+    }
     remainingTiles -= 2;
     checkFinish();
   }, 500);
 }
 
 function resetMatch(){
+  currentPlayer = 2;
+  changePlayer();
+  pointsPlayer1 = 0;
+  pointsPlayer2 = 0;
   document.getElementById('timer').innerHTML = "00:00";
   document.getElementById('end-box').classList.toggle('game-ended');
   document.getElementById('end-box').style.display = 'none';

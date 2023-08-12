@@ -164,7 +164,7 @@ header img{
   border-radius: var(--border-radius);
   font-size: 2rem;
   padding: 2rem;
-  width: 90vw;
+  width: calc(90vw - 4rem);
 }
 
 /* End popup */
@@ -199,7 +199,7 @@ header img{
   background-color: var(--primary);
   border-radius: var(--border-radius);
   color: var(--background);
-  margin: 2rem;
+  margin-top: 1rem;
   padding: 1rem;
   text-decoration: none;
   transition: 0.25s;
@@ -216,5 +216,6 @@ header img{
 @media (max-width: 850px) {
   .dificulty-selector{
     grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 0;
   }
 }

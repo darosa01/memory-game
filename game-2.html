@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 jugadors - Memory</title>
+
+  <link rel="stylesheet" href="assets/css/game.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</head>
+<body>
+  <header>
+    <a href="./"><img src="assets/icons/home.svg" alt="Home button"></a>
+    <h1>Torn: <span id="current-player">Jugador/a 1</span></h1>
+    <div id="timer">00:00</div>
+  </header>
+  <main id="board"></main>
+  <div id="dificulty-box">
+    <div>
+      <div>Selecciona la dificultat:</div>
+      <div class="dificulty-selector">
+        <div onclick="startGame(3)">3x3</div>
+        <div onclick="startGame(4)">4x4</div>
+        <div onclick="startGame(5)">5x5</div>
+        <div onclick="startGame(6)">6x6</div>
+      </div>
+    </div>
+  </div>
+  <div class="end-box" id="end-box">
+    <div>
+      <h2>Enhorabona!</h2>
+      <div id="winner-box">Ha guanyat el/la jugador/a <b><span id="winner"></span></b></div>
+      <div id="tie-box">Heu empatat!</div>
+      <div>
+        <div><b>Parelles jugador/a 1: </b><span id="first-player-pairs"></span></div>
+        <div><b>Parelles jugador/a 2: </b><span id="second-player-pairs"></span></div>
+      </div>
+      <div>Heu acabat la partida en <span id="end-time"></span></div>
+      <a class="main-page-button" href="javascript:resetMatch()">Repeteix la partida</a>
+      <a class="main-page-button" href="./">Torna a la pàgina principal</a>
+    </div>
+  </div>
+  <script src="assets/js/memory-2.js"></script>
+</body>
+</html>
