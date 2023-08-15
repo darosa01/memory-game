@@ -123,15 +123,20 @@ header img{
 }
 
 
-/* Dificulty selector */
+/* Difficulty selector */
 
-.dificulty-selector{
+.difficulty-radio{
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.difficulty-selector{
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(4, 1fr);
   padding: 2rem;
 }
-.dificulty-selector > div{
+.difficulty-selector > div{
   align-items: center;
   
   background-color: var(--secondary);
@@ -146,7 +151,7 @@ header img{
   width: calc(100% - 4rem);
 }
 
-#dificulty-box{
+#difficulty-box{
   align-items: center;
   background-color: hsla(0, 0%, 50%);
   display: flex;
@@ -159,7 +164,7 @@ header img{
   width: 100vw;
   z-index: 10;
 }
-#dificulty-box > div{
+#difficulty-box > div{
   background-color: var(--background);
   border-radius: var(--border-radius);
   font-size: 2rem;
@@ -213,8 +218,12 @@ header img{
   transition: opacity 1s;
 }
 
+.winner-box{
+  text-align: center;
+}
+
 @media (max-width: 850px) {
-  .dificulty-selector{
+  .difficulty-selector{
     grid-template-columns: repeat(2, 1fr);
     padding: 2rem 0;
   }

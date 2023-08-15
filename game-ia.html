@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 jugador contra l'ordinador - Memory</title>
+  <link rel="icon" href="assets/icons/memory.png">
+  <link rel="stylesheet" href="assets/css/game.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</head>
+<body>
+  <header>
+    <a href="./"><img src="assets/icons/home.svg" alt="Home button"></a>
+    <h1>Torn: <span id="current-player">Jugador/a</span></h1>
+    <div id="timer">00:00</div>
+  </header>
+  <main id="board"></main>
+  <div id="difficulty-box">
+    <div>
+      <div>Selecciona la dificultat:</div>
+      <div class="difficulty-selector">
+        <div onclick="startGame(3)">3x3</div>
+        <div onclick="startGame(4)">4x4</div>
+        <div onclick="startGame(5)">5x5</div>
+        <div onclick="startGame(6)">6x6</div>
+      </div>
+      <fieldset>
+        <legend>Mode de l'ordinador:</legend>
+        <div class="difficulty-radio">
+          <input type="radio" id="facil" name="ia-mode" value="40" checked />
+          <label for="facil">Fàcil</label>
+        </div>
+        <div class="difficulty-radio">
+          <input type="radio" id="mitja" name="ia-mode" value="70" />
+          <label for="mitja">Mitjà</label>
+        </div>
+        <div class="difficulty-radio">
+          <input type="radio" id="dificil" name="ia-mode" value="100" />
+          <label for="dificil">Difícil</label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="end-box" id="end-box">
+    <div>
+      <div class="winner-box" id="player-winner-box">
+        <h2>Enhorabona!</h2>
+        <div>Has guanyat!</div>
+      </div>
+      <div class="winner-box" id="computer-winner-box">
+        <h2>Llàstima...</h2>
+        <div>T'ha guanyat l'ordinador.</div>
+      </div>
+      <div class="winner-box" id="tie-box">
+        <h2>Oh vaja!</h2>
+        <div>Heu empatat!</div>
+      </div>
+      <div>
+        <div><b>Parelles jugador/a: </b><span id="first-player-pairs"></span></div>
+        <div><b>Parelles ordinador: </b><span id="second-player-pairs"></span></div>
+      </div>
+      <div>Heu acabat la partida en <span id="end-time"></span></div>
+      <a class="main-page-button" href="javascript:resetMatch()">Repeteix la partida</a>
+      <a class="main-page-button" href="./">Torna a la pàgina principal</a>
+    </div>
+  </div>
+  <script src="assets/js/memory-ia.js"></script>
+</body>
+</html>
