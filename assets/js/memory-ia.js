@@ -1,5 +1,6 @@
 const jsConfetti = new JSConfetti()
 var audioVictoria = new Audio('assets/audio/so-victoria.wav');
+var audioDerrota = new Audio('assets/audio/so-derrota.wav');
 var audioFlip = new Audio('assets/audio/flip2.mp3');
 
 var selectedTile = null;
@@ -91,6 +92,7 @@ function checkFinish(){
     } else if(pointsPlayer1 < pointsPlayer2){
       document.getElementById('player-winner-box').style.display = 'none';
       document.getElementById('computer-winner-box').style.display = 'block';
+      audioDerrota.play();
     } else {
       document.getElementById('player-winner-box').style.display = 'none';
       document.getElementById('tie-box').style.display = 'block';

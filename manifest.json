@@ -55,6 +55,15 @@
         "src": "assets/icons/users.png",
         "sizes": "96x96",
         "type": "image/png"
+      },
+			{
+      "name": "Contra l'ordinador",
+      "url": "/memory/game-ia.html",
+      "description": "Inicia una partida contra l'ordinador",
+      "icons": [{
+        "src": "assets/icons/robot.png",
+        "sizes": "96x96",
+        "type": "image/png"
       }]
     }
   ]

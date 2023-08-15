@@ -169,7 +169,7 @@ function startGame(size){
   createBoard(size);
   startTimer();
 
-  document.getElementById('dificulty-box').style.display = "none";
+  document.getElementById('difficulty-box').style.display = "none";
 }
 
 function startTimer(){
