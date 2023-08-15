@@ -43,25 +43,29 @@
   </div>
   <div class="end-box" id="end-box">
     <div>
-      <div class="winner-box" id="player-winner-box">
-        <h2>Enhorabona!</h2>
-        <div>Has guanyat!</div>
-      </div>
-      <div class="winner-box" id="computer-winner-box">
-        <h2>Llàstima...</h2>
-        <div>T'ha guanyat l'ordinador.</div>
-      </div>
-      <div class="winner-box" id="tie-box">
-        <h2>Oh vaja!</h2>
-        <div>Heu empatat!</div>
-      </div>
       <div>
-        <div><b>Parelles jugador/a: </b><span id="first-player-pairs"></span></div>
-        <div><b>Parelles ordinador: </b><span id="second-player-pairs"></span></div>
+        <div class="winner-box" id="player-winner-box">
+          <h2>Enhorabona!</h2>
+          <div class="end-info">Has guanyat!</div>
+        </div>
+        <div class="winner-box" id="computer-winner-box">
+          <h2>Llàstima...</h2>
+          <div class="end-info">T'ha guanyat l'ordinador.</div>
+        </div>
+        <div class="winner-box" id="tie-box">
+          <h2>Oh vaja!</h2>
+          <div class="end-info">Heu empatat!</div>
+        </div>
+        <div>
+          <div class="end-info"><b>Parelles jugador/a: </b><span id="first-player-pairs"></span></div>
+          <div class="end-info"><b>Parelles ordinador: </b><span id="second-player-pairs"></span></div>
+        </div>
+        <div class="end-info">Heu acabat la partida en <span id="end-time"></span></div>
       </div>
-      <div>Heu acabat la partida en <span id="end-time"></span></div>
-      <a class="main-page-button" href="javascript:resetMatch()">Repeteix la partida</a>
-      <a class="main-page-button" href="./">Torna a la pàgina principal</a>
+      <div class="end-box-buttons">
+        <a href="javascript:resetMatch()">Repeteix la partida</a>
+        <a href="./">Torna a la pàgina principal</a>
+      </div>
     </div>
   </div>
   <script src="assets/js/memory-ia.js"></script>
