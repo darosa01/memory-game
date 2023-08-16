@@ -174,6 +174,7 @@ function goodPlayAI(){
 
   selectTileAI(parseInt(firstCardKey));
   selectTileAI(parseInt(secondCardKey));
+  playIsCompleted = false;
 }
 
 function isMoveOkay(cardNumber){

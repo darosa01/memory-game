@@ -20,8 +20,8 @@ header > div{
   justify-self: end;
 }
 header img{
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
 /* Board */
@@ -223,6 +223,7 @@ header img{
   display: flex;
   height: 100%;
   justify-content: center;
+  text-align: center;
   text-decoration: none;
   transition: 0.15s;
   width: 100%;
